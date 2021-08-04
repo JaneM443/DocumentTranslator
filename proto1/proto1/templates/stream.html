@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content2 %}
+
+    {% for content in Blocks %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <span class="id-tag">User{{content.user_id}}</span>
+                    <span class="id-tag">{{content.type}}</span>
+                    <span class="id-tag">{{content.id}}</span>
+                </div>
+                <br /><h4><a class="article-title" href="#">{{content.title}}</a></h4><br />
+                <p class="article-content">{{content.body}}</p><br />
+                <p class="article-title">Overlap: {{content.overlap}}</p><br />
+                {% for i in 'link' %}
+                <p class="article-content"></p>
+                {% endfor %}
+            </div>
+        </article>
+    {% endfor %}
+
+    <div class="content-section">
+        <form method="post">
+
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">New Block</legend>
+                <div class="form-group">
+                    <label for="exampleInputType1">Type</label>
+                    <input type="text" class="form-control" id="exampleInputType1" placeholder="Enter type" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputContent1">Content</label>
+                    <input type="text" class="form-control" id="exampleInputContent1" placeholder="Content" />
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,50 @@
+﻿{% extends "layout_super.html" %}
+
+{% block content %}
+
+<body>
+    <div class="super">
+
+        <div class="col-8">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <form method="POST" action="/">
+
+            <fieldset class="form-group">
+                {% for field in form %}
+
+                {% if field.type == "StringField" or field.type == "PasswordField" %}
+                <div class="form-group">
+          
+                    {{  field(class="form-control form-control-lg") }}
+
+                </div>
+                {% endif %}
+
+                {% endfor %}
+                <div class="form-check text-muted">
+                    {{ form.remember(class="form-check-input") }} Remember me
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted ml-2">
+                    Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Register here</a>
+                </small>
+            </div>
+
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,217 @@
+.line_vertical {
+    border-left: 1px solid cornflowerblue;
+    height: 20px;
+    position: absolute;
+    left: 45%;
+    margin-top: -20px;
+}
+
+.super {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.move {
+    position: absolute;
+}
+
+.dot {
+    position: fixed;
+    top: 4%;
+    left: 85%;
+    height: 120px;
+    width: 120px;
+    padding: 20px 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.glyphicon {
+    font-size: 50px;
+    opacity: 0.5;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 25px;
+}
+
+table, .content-section {
+    padding: 10px 20px;
+    border: 1px solid cornflowerblue;
+    color: cornflowerblue;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    width: 700px;
+}
+
+.col-1, .col-2, .col-3 {
+    position: relative;
+    display: inline-block;
+}
+
+.col-1 {
+    width: 60%;
+}
+.col-2 {
+    width: 30%;
+}
+.col-3 {
+    width: 20%;
+}
+
+th, td {
+    border: 1px solid cornflowerblue;
+    padding: 15px;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.tag {
+    opacity: 0.5;
+    padding: 5px;
+}
+
+.links {
+    padding: 15px 10px;
+    border-radius: 25px;
+    text-align: center;
+    position: fixed;
+    left: 85%;
+    background-color: #bbb;
+    width: 125px;
+} 
+
+#linkImport {
+    top: 78%;
+}
+
+#linkExport {
+    top: 87%;
+}
+
+.sidenav {
+    height: 100%; 
+    width: 120px; 
+    position: fixed;
+    z-index: 1;
+    top: 15%;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    display: block;
+}
+
+a {
+    color: dimgrey;
+    padding: 5px;
+}
+
+a:hover {
+        color: cornflowerblue;
+}
+
+
+.main {
+    margin-left: 100px;
+    padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+     }
+}
+
+body {
+    background: #fff;
+    color: #333333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #444444;
+}
+
+.bg-dark {
+    background-color: #CCCCCC;
+}
+
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+
+.navbar-brand {
+    color: #444444;
+    text-align: center;
+    padding-right: 50px;
+}
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+

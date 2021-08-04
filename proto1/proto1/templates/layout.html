@@ -1,0 +1,57 @@
+﻿{% extends "layout_super.html" %}
+
+{% block content %}
+
+<header>
+    <div class="main"><h1>Project</h1></div>
+
+    <div class="main">
+            <span class=""><a href="{{ url_for('storyboard_view') }}">Storyboard</a></span>
+            <span class=""><a href="{{ url_for('map') }}">  Map</a></span>
+            <span class="dot"><a class="glyphicon glyphicon-user" href="\"></a></span>
+        <hr />
+    </div>
+</header>
+
+<body>
+    <div class="sidenav">
+        <a href="{{ url_for('dashboard') }}">Project</a>
+        <a href="#">User</a>
+    </div>
+
+    <div class="main">
+    
+        <main role="main">
+            <div class="row">
+                <div class="col-md-8">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    {% block content2 %}{% endblock %}
+                </div>
+            </div>
+        </main>
+        <hr />
+        <footer>
+            <p>&copy; {{ year }} Mediazoo</p>
+        </footer>
+    
+    </div>
+    <div class="links" id="linkImport"><a href="{{ url_for('import_doc') }}">Import</a></div>
+    <div class="links" id="linkExport"><a href="{{ url_for('export') }}">Export</a></div>
+
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+    {% block scripts %}{% endblock %}
+
+</body>
+
+
+{% endblock content %}

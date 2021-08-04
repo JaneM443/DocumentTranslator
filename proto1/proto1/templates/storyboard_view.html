@@ -1,0 +1,154 @@
+﻿{% extends "layout.html" %}
+
+{% block content2 %}
+
+
+<!--
+<div class="container">
+    {% for key, value in Edges.items() %}
+
+        {% for block in value %}
+            <div class="grid">
+                <div class="content-section move">
+                    <p class="title">{{block.title}}</p>
+                    <p class="body">{{block.body}}</p>
+                    <span class="tag">{{block.type}}</span>
+                    <span class="tag">{{block.username}}</span>
+                    <span class="tag">{{block.updated_at}}</span>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endfor %}
+</div>
+-->
+
+<style>
+    .content-section:hover {
+        border: 2px solid #3771d9;
+        color: #3771d9;
+    }
+</style>
+
+{% for key, value in Edges.items() %}
+
+    <div class="row">
+    {% for block in value %}
+
+    <div class="modal fade" id="editModal{{block.id}}" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <form method="POST" action="{{ url_for('storyboard_view') }}">
+
+                            <fieldset class="form-group">
+                                {% for field in form %}
+
+                                {% if field.type != "SubmitField" %}
+                                    <div class="form-group">
+                                        {% set attribute = field.name %}
+
+                                        {{  field(class="form-control form-control-lg", value=block[attribute]) }}
+
+                                    </div>
+                                {% else %}
+
+                                    <div class="form-group">
+                                        {{ form.submit(class="btn btn-primary") }}
+                                    </div>
+
+                                {% endif %}
+
+                                {% endfor %}
+                            </fieldset>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        {% if value|length == 1 %}
+
+        <div class="content-section col-1" data-toggle="modal" data-target='#editModal{{block.id}}'>
+            <p class="title">{{block.title}}</p>
+            <p class="body">{{block.body}}</p>
+            <span class="tag">{{block.type}}</span>
+            <span class="tag">{{block.username}}</span>
+            <span class="tag">{{block.updated_at}}</span>
+        </div>
+
+        {% elif value|length == 2 %}
+
+        <div class="content-section col-2" data-toggle="modal" data-target='#editModal{{block.id}}'>
+            <p class="body">{{block.body}}</p>
+            <span class="tag">Choice</span>
+            <span class="tag">User</span>
+            <span class="tag">{{block.updated_at}}</span>
+        </div>
+
+        {% else %}
+
+        <div class="content-section col-3" data-toggle="modal" data-target='#editModal{{block.id}}'>
+            <p class="body">{{block.body}}</p>
+            <span class="tag">Choice</span>
+            <span class="tag">User</span>
+            <span class="tag">{{block.updated_at}}</span>
+        </div>
+
+        {% endif %}
+
+        <div class="line_vertical"></div>
+    
+    {% endfor %}
+    </div>
+
+{% endfor %}
+
+<script>
+
+    var elements = document.getElementsByClassName("move");
+    for (var i = 0; i < elements.length; i++) {
+        dragElement(elements[i])
+    }
+
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        elmnt.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            pos2 = pos4 - e.clientY;
+
+            pos4 = e.clientY;
+
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+</script>
+
+{% endblock %}

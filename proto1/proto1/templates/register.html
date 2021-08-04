@@ -1,0 +1,60 @@
+{% extends "layout_super.html" %}
+
+{% block content %}
+
+    <body>
+        <div class="super">
+
+            <div class="col-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <form method="POST" action="">
+
+                {{ form.hidden_tag() }}
+
+                <fieldset class="form-group">
+
+                    {% for field in form %}
+
+                    {% if field.type != "SubmitField" %}
+                    <div class="form-group">
+
+                        {% if field.errors %}
+                        {{ field(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in field.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{  field(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                </fieldset>
+
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                    </small>
+                </div>
+            </form>
+        </div>
+    </body>
+
+{% endblock %}

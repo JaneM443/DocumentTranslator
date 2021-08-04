@@ -1,0 +1,46 @@
+﻿{% extends "layout.html" %}
+
+{% block content2 %}
+
+{% for key, value in Edges.items() %}
+
+    {% for block in value %}
+
+        <table>
+            <tr>
+
+                <th class="title">Attribute</th>
+                <th class="title">Content</th>
+
+            </tr>
+            <tr>
+
+                <th class="title">Type</th>
+                <th>{{block.type}}</th>
+
+            </tr>
+            <tr>
+
+                <th class="title">ID</th>
+                <th>{{block.id}}</th>
+
+            </tr>
+            <tr>
+
+                <th class="title">Title</th>
+                <th>{{block.title}}</th>
+
+            </tr>
+            <tr>
+
+                <th class="title">Body</th>
+                <th>{{block.body}}</th>
+
+            </tr>
+        </table>
+
+    {% endfor %}
+
+{% endfor %}
+
+{% endblock %}

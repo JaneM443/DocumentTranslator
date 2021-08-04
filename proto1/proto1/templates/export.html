@@ -1,0 +1,24 @@
+﻿{% extends "layout.html" %}
+
+{% block content2 %}
+
+<form method="POST" action="{{ url_for('export') }}">
+
+    <fieldset class="form-group">
+
+        <p>Choose file format:</p>
+
+        <div class="form-group">
+
+            {{  form.type(class="form-control form-control-lg") }}
+
+        </div>
+    </fieldset>
+
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+
+</form>
+
+{% endblock %}

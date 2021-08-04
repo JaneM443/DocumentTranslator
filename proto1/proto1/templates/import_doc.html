@@ -1,0 +1,38 @@
+﻿{% extends "layout.html" %}
+
+{% block content2 %}
+
+    
+
+    <form method="POST" action="{{ url_for('import_doc') }}">
+
+        <fieldset class="form-group">
+
+            {% for field in form %}
+
+                {% if field.type != "SubmitField" %}
+
+                    <div class="form-group">
+            
+                        {{  field(class="form-control form-control-lg") }}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="form-group">
+
+                        {{ field(class="btn btn-primary") }}
+
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </fieldset>
+
+    </form>
+
+
+{% endblock %}
